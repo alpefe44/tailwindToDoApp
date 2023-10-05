@@ -26,7 +26,7 @@ export default function App() {
       <View className="items-center">
         <View className="w-[90%] h-[60] bg-white rounded-xl flex-row items-center px-2 shadow-2xl shadow-red-950 mt-9">
           <Ionicons name="add-circle" size={34} color="black" />
-          <TextInput placeholder='Ara' className="p-4 text-black" placeholderTextColor={'black'} autoCapitalize='none' onEndEditing={deneme} onChangeText={(text) => setvalue(text)} value={value}></TextInput>
+          <TextInput placeholder='Ara' className="w-[100%] p-4 text-black" placeholderTextColor={'black'} autoCapitalize='none' onEndEditing={deneme} onChangeText={(text) => setvalue(text)} value={value}></TextInput>
         </View>
         <Pressable className="mt-2 p-5 w-auto bg-zinc-800 rounded-xl shadow-lg" onPress={deneme}>
           <Text className="text-white font-bold">
@@ -41,15 +41,15 @@ export default function App() {
           source={require('./assets/animation/animation.json')}
           autoPlay
           loop
-        /> : <ScrollView showsVerticalScrollIndicator = {false}>
+        /> : <ScrollView showsVerticalScrollIndicator={false}>
           <View className="px-2 flex-row flex-wrap justify-center">
             {
-              todo.filter((item) => {
+              todo.filter((item, index) => {
                 return item.trim() !== ""
               }).map((item, index) => {
                 console.log(index)
                 return (
-                  <View className="rounded-md bg-slate-400 w-[30%] p-5  my-5 shadow-lg items-center justify-center mx-1">
+                  <View key={index} className="rounded-md bg-slate-400 w-[30%] p-5  my-5 shadow-lg items-center justify-center mx-1">
                     <Pressable onPress={() => handleDelete(index)}>
                       <Text className="text-center text-2xl text-white font-thin-bold ">
                         {item}
